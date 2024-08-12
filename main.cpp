@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 
@@ -83,51 +84,51 @@ Main Object: Car Interior
         Name 4 nouns you'll find on the [Sub Object]
             1) paddle shifters
             2) 'cruise control' controls
-            3) 
-            4) 
+            3) car horn
+            4) audio volume adjuster
         Name 2 actions that the [Sub Object] can do:
             1) adjust cruise control settings.
-            2)
+            2) activate car  horn
         
     Sub Object: Instrument Cluster
         Name 4 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
-            4)
+            1) speedometer 
+            2) display screen
+            3) transmission indicator (shows PRNDL state)
+            4) odometer
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) increment odometer as car moves
+            2) change transmission setting depending on currently selected gear
+            3) display car's current speed
     
     Sub Object: Environment Controls
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) air conditioner settings
+            2) fan settings
+            3) current temperature display
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) increase/decrease fan output
+            2) change current temperature
+            3) turn off air conditioning
 
     Sub Object: Infotainment System
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) display currently playing song
+            2) buttons to control audio playback
+            3) volume knob
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) turn up volume
+            2) skip current song
+            3) change playback device to radio
 
     Sub Object: Seat 
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) leather
+            2) headrest
+            3) seat adjustment controls
         Name 2 actions that the [Sub Object] can do:
-            1)
-            2)
+            1) remove headrest
+            2) adjust seat height
 */
 
 /*
