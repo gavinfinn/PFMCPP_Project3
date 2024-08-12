@@ -199,11 +199,11 @@ Part 1b - Step 2: Assignment
 
 Thing 1) bass guitar
 5 properties:
-    1) number of strings
-    2) type of pickup
-    3) number of frets
-    4) volume output
-    5) number of tone controls
+    1) number of strings (int)
+    2) type of pickup (std::string)
+    3) number of frets (int)
+    4) volume output (float)
+    5) number of tone controls (int)
 3 things it can do:
     1) play a note
     2) modify tone
@@ -211,11 +211,11 @@ Thing 1) bass guitar
 
 Thing 2) video game character
 5 properties:
-    1) number of lives
-    2) current level
-    3) armor level
-    4) experience bar
-    5) amount of gold owned
+    1) number of lives (int)
+    2) current level (int)
+    3) armor level (float)
+    4) experience bar (double)
+    5) amount of gold owned (double)
 3 things it can do:
     1) cast spell
     2) select a skill
@@ -223,11 +223,11 @@ Thing 2) video game character
 
 Thing 3) coffee shop
 5 properties:
-    1) number of employees
-    2) number of coffee machines
-    3) number of cups sold per day
-    4) price of coffee
-    5) types of coffee options available
+    1) number of employees (int)
+    2) number of coffee machines (int)
+    3) number of cups sold per day (int)
+    4) price of coffee (float)
+    5) types of coffee options available (std::string)
 3 things it can do:
     1) make coffee
     2) sell coffee
@@ -235,11 +235,11 @@ Thing 3) coffee shop
 
 Thing 4) barbecue grill
 5 properties:
-    1) number of burners
-    2) current interior temperature
-    3) fuel type
-    4) weight
-    5) material it's made of
+    1) number of burners (int)
+    2) current interior temperature (float)
+    3) fuel type (std::string)
+    4) weight (float)
+    5) material it's made of (std::string)
 3 things it can do:
     1) cook food
     2) ignite burner
