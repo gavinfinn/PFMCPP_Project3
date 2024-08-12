@@ -338,17 +338,17 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 
-Thing 10)
+Thing 10) airplane
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) engine
+    2) wings
+    3) cockpit
+    4) storage
+    5) seating area
 3 things it can do:
-    1)
-    2)
-    3)
+    1) accelerate
+    2) liftoff
+    3) adjust altitude
  */
 
  /*
