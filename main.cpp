@@ -197,53 +197,53 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1)
+Thing 1) bass guitar
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of strings
+    2) type of pickup
+    3) number of frets
+    4) volume output
+    5) number of tone controls
 3 things it can do:
-    1)
-    2)
-    3)
+    1) play a note
+    2) modify tone
+    3) change volume
 
-Thing 2)
+Thing 2) video game character
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of lives
+    2) current level
+    3) armor level
+    4) experience bar
+    5) amount of gold owned
 3 things it can do:
-    1)
-    2)
-    3)
+    1) cast spell
+    2) select a skill
+    3) attack with weapon
 
-Thing 3)
+Thing 3) coffee shop
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of employees
+    2) number of coffee machines
+    3) number of cups sold per day
+    4) price of coffee
+    5) types of coffee options available
 3 things it can do:
-    1)
-    2)
-    3)
+    1) make coffee
+    2) sell coffee
+    3) open and close shop
 
-Thing 4)
+Thing 4) barbecue grill
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of burners
+    2) current interior temperature
+    3) fuel type
+    4) weight
+    5) material it's made of
 3 things it can do:
-    1)
-    2)
-    3)
+    1) cook food
+    2) ignite burner
+    3) preheat
 */
 
 /*
