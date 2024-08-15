@@ -435,65 +435,65 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
-Thing 5)
+Thing 5) Engine
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) velocity 
+    2) acceleration 
+    3) power 
+    4) fuel type
+    5) engine type
 3 things it can do:
-    1)
-    2)
-    3)
+    1) accelerate
+    2) ignite
+    3) activate turbo
 
-Thing 6)
+Thing 6) Wings
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) wing loading
+    2) lift to drag ration
+    3) type/shape of wing
+    4) altitude
+    5) length
 3 things it can do:
-    1)
-    2)
-    3)
+    1) engage flaps
+    2) increase altitude
+    3) adjust pitch, yaw, and roll
 
-Thing 7)
+Thing 7) Cockpit
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of seats
+    2) number of pilots
+    3) fuel tank meters
+    4) spedometer
+    5) odometer
 3 things it can do:
-    1)
-    2)
-    3)
+    1) signal crew for takeoff
+    2) engage/disengage landing gear
+    3) adjust throttle
 
-Thing 8)
+Thing 8) Seating Area
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of seats
+    2) number of passengers
+    3) fasten seatbelt sign
+    4) overhead storage bin capacity
+    5) seat numbers
 3 things it can do:
-    1)
-    2)
-    3)
+    1) assign seats to passengers
+    2) store luggage
+    3) turn on/off seatbelt sign
 
-Thing 9)
+Thing 9) Storage
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) max weight allowed
+    2) width of storage area
+    3) length of storage area
+    4) height of storage area
+    5) number of stored luggage
 3 things it can do:
-    1)
-    2)
-    3)
+    1) fill storage space with luggage
+    2) empty storage space
+    3) check if storage is full
  */
 
 /*
