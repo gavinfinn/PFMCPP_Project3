@@ -437,23 +437,23 @@ example:
 
 Thing 5) Engine
 5 properties:
-    1) velocity 
-    2) acceleration 
-    3) power 
-    4) fuel type
-    5) engine type
+    1) velocity (float)
+    2) acceleration (float)
+    3) power (float)
+    4) fuel type (std::string)
+    5) engine type (std::string)
 3 things it can do:
-    1) accelerate
+    1) accelerate 
     2) ignite
     3) activate turbo
 
 Thing 6) Wings
 5 properties:
-    1) wing loading
-    2) lift to drag ration
-    3) type/shape of wing
-    4) altitude
-    5) length
+    1) wing loading (float)
+    2) lift to drag ratio (float)
+    3) type/shape of wing (std::string)
+    4) altitude (float))
+    5) length (float)
 3 things it can do:
     1) engage flaps
     2) increase altitude
@@ -461,11 +461,11 @@ Thing 6) Wings
 
 Thing 7) Cockpit
 5 properties:
-    1) number of seats
-    2) number of pilots
-    3) fuel tank meters
-    4) spedometer
-    5) odometer
+    1) number of seats (int)
+    2) number of pilots (int)
+    3) fuel tank meters (float)
+    4) spedometer (float)
+    5) odometer (float)
 3 things it can do:
     1) signal crew for takeoff
     2) engage/disengage landing gear
@@ -473,11 +473,11 @@ Thing 7) Cockpit
 
 Thing 8) Seating Area
 5 properties:
-    1) number of seats
-    2) number of passengers
-    3) fasten seatbelt sign
-    4) overhead storage bin capacity
-    5) seat numbers
+    1) number of seats (int)
+    2) number of passengers (int)
+    3) fasten seatbelt sign (bool)
+    4) overhead storage bin capacity (float)
+    5) seat numbers (std::string)
 3 things it can do:
     1) assign seats to passengers
     2) store luggage
@@ -485,11 +485,11 @@ Thing 8) Seating Area
 
 Thing 9) Storage
 5 properties:
-    1) max weight allowed
-    2) width of storage area
-    3) length of storage area
-    4) height of storage area
-    5) number of stored luggage
+    1) max weight allowed (float)
+    2) width of storage area (float)
+    3) length of storage area (float)
+    4) height of storage area (float)
+    5) number of stored luggage (int)
 3 things it can do:
     1) fill storage space with luggage
     2) empty storage space
