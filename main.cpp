@@ -613,7 +613,55 @@ struct CarWash  //This is the empty struct, below my plain-English UDT.
 /*
 Notice that the struct name 'CarWash' conforms with the Course Coding Standard, described in the Readme.MD
 */
+struct BassGuitar 
+{
+    
+};
 
+struct VideoGameCharacter 
+{
+    
+};
+
+struct CoffeeShop 
+{
+    
+};
+
+struct BarbecueGrill 
+{
+    
+};
+
+struct PlaneEngine 
+{
+    
+};
+
+struct PlaneWings
+{
+    
+};
+
+struct PlaneCockpit
+{
+    
+};
+
+struct PlaneCabin // renamed Seating Area to Cabin because it's a more accurate name
+{
+    
+};
+
+struct PlaneStorage
+{
+
+};
+
+struct Airplane
+{
+    
+};
 /*
 =================
 Part 1e - Step 2: Commit
