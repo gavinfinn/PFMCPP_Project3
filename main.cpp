@@ -469,7 +469,7 @@ struct VideoGameCharacter
     //     5) amount of gold owned (double)
     double goldOwned = 538.53;
 
-    struct equippedWeapon 
+    struct EquippedWeapon 
     {
         // 5 properties:
         float minDamage = 5.0f;
@@ -490,7 +490,9 @@ struct VideoGameCharacter
     //     2) select a skill
     void selectSkill(std::string skillName);
     //     3) attack with weapon
-    float attackWithWeapon(std::string weaponName); // returns damage done
+    float attackWithWeapon(EquippedWeapon currentWeapon); 
+
+    EquippedWeapon currentWeapon;
 };
 /*
 Thing 3) coffee shop
@@ -651,11 +653,13 @@ struct PlaneCabin // renamed Seating Area to Cabin because it's a more accurate 
 
     // 3 things it can do:
     //     1) assign seats to passengers
-    void assignSeatsToPassengers(std::string passengerName);
+    void assignSeatsToPassengers(std::string passengerName, FirstClassSection firstClassSection);
     //     2) store luggage
     float storeLuggage(float luggageVolume);
     //     3) turn on/off seatbelt sign
     bool turnOnSeatbeltSign();
+
+    FirstClassSection firstClassSection;
 };
 /*
 Thing 9) Storage
