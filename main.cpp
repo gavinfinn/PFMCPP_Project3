@@ -428,125 +428,165 @@ MOVE THEM to the space below this block comment and put them in numerical order
 
 /*
 Thing 1) bass guitar
-5 properties:
-    1) number of strings (int)
-    2) type of pickup (std::string)
-    3) number of frets (int)
-    4) volume output (float)
-    5) number of tone controls (int)
-3 things it can do:
-    1) play a note
-    2) modify tone
-    3) change volume
-
-Thing 2) video game character
-5 properties:
-    1) number of lives (int)
-    2) current level (int)
-    3) armor level (float)
-    4) experience bar (double)
-    5) amount of gold owned (double)
-3 things it can do:
-    1) cast spell
-    2) select a skill
-    3) attack with weapon
-
-Thing 3) coffee shop
-5 properties:
-    1) number of employees (int)
-    2) number of coffee machines (int)
-    3) number of cups sold per day (int)
-    4) price of coffee (float)
-    5) types of coffee options available (std::string)
-3 things it can do:
-    1) make coffee
-    2) sell coffee
-    3) open and close shop
-
-Thing 4) barbecue grill
-5 properties:
-    1) number of burners (int)
-    2) current interior temperature (float)
-    3) fuel type (std::string)
-    4) weight (float)
-    5) material it's made of (std::string)
-3 things it can do:
-    1) cook food
-    2) ignite burner
-    3) preheat
-
-Thing 5) Engine
-5 properties:
-    1) velocity (float)
-    2) acceleration (float)
-    3) power (float)
-    4) fuel type (std::string)
-    5) engine type (std::string)
-3 things it can do:
-    1) accelerate 
-    2) ignite
-    3) activate turbo
-
-Thing 6) Wings
-5 properties:
-    1) wing loading (float)
-    2) lift to drag ratio (float)
-    3) type/shape of wing (std::string)
-    4) altitude (float))
-    5) length (float)
-3 things it can do:
-    1) engage flaps
-    2) increase altitude
-    3) adjust pitch, yaw, and roll
-
-Thing 7) Cockpit
-5 properties:
-    1) number of seats (int)
-    2) number of pilots (int)
-    3) fuel tank meters (float)
-    4) spedometer (float)
-    5) odometer (float)
-3 things it can do:
-    1) signal crew for takeoff
-    2) engage/disengage landing gear
-    3) adjust throttle
-
-Thing 8) Seating Area
-5 properties:
-    1) number of seats (int)
-    2) number of passengers (int)
-    3) fasten seatbelt sign (bool)
-    4) overhead storage bin capacity (float)
-    5) seat numbers (std::string)
-3 things it can do:
-    1) assign seats to passengers
-    2) store luggage
-    3) turn on/off seatbelt sign
-
-Thing 9) Storage
-5 properties:
-    1) max weight allowed (float)
-    2) width of storage area (float)
-    3) length of storage area (float)
-    4) height of storage area (float)
-    5) number of stored luggage (int)
-3 things it can do:
-    1) fill storage space with luggage
-    2) empty storage space
-    3) check if storage is full
-
-Thing 10) airplane
-5 properties:
-    1) engine
-    2) wings
-    3) cockpit
-    4) storage
-    5) seating area
-3 things it can do:
-    1) accelerate
-    2) liftoff
-    3) adjust altitude
 */
+struct BassGuitar 
+{
+    // 5 properties:
+    //     1) number of strings (int)
+    //     2) type of pickup (std::string)
+    //     3) number of frets (int)
+    //     4) volume output (float)
+    //     5) number of tone controls (int)
+    // 3 things it can do:
+    //     1) play a note
+    //     2) modify tone
+    //     3) change volume
+};
+
+/*
+Thing 2) video game character
+*/
+struct VideoGameCharacter 
+{
+    // 5 properties:
+    //     1) number of lives (int)
+    //     2) current level (int)
+    //     3) armor level (float)
+    //     4) experience bar (double)
+    //     5) amount of gold owned (double)
+    // 3 things it can do:
+    //     1) cast spell
+    //     2) select a skill
+    //     3) attack with weapon
+};
+/*
+Thing 3) coffee shop
+*/
+struct CoffeeShop 
+{
+    // 5 properties:
+    //     1) number of employees (int)
+    //     2) number of coffee machines (int)
+    //     3) number of cups sold per day (int)
+    //     4) price of coffee (float)
+    //     5) types of coffee options available (std::string)
+    // 3 things it can do:
+    //     1) make coffee
+    //     2) sell coffee
+    //     3) open and close shop
+};
+/*
+Thing 4) barbecue grill
+*/
+struct BarbecueGrill 
+{
+    // 5 properties:
+    //     1) number of burners (int)
+    //     2) current interior temperature (float)
+    //     3) fuel type (std::string)
+    //     4) weight (float)
+    //     5) material it's made of (std::string)
+    // 3 things it can do:
+    //     1) cook food
+    //     2) ignite burner
+    //     3) preheat
+};
+/*
+Thing 5) Engine
+*/
+struct PlaneEngine 
+{
+    // 5 properties:
+    //     1) velocity (float)
+    //     2) acceleration (float)
+    //     3) power (float)
+    //     4) fuel type (std::string)
+    //     5) engine type (std::string)
+    // 3 things it can do:
+    //     1) accelerate 
+    //     2) ignite
+    //     3) activate turbo
+};
+/*
+Thing 6) Wings
+*/
+struct PlaneWings
+{
+    // 5 properties:
+    //     1) wing loading (float)
+    //     2) lift to drag ratio (float)
+    //     3) type/shape of wing (std::string)
+    //     4) altitude (float))
+    //     5) length (float)
+    // 3 things it can do:
+    //     1) engage flaps
+    //     2) increase altitude
+    //     3) adjust pitch, yaw, and roll
+};
+/*
+Thing 7) Cockpit
+*/
+struct PlaneCockpit
+{
+    // 5 properties:
+    //     1) number of seats (int)
+    //     2) number of pilots (int)
+    //     3) fuel tank meters (float)
+    //     4) spedometer (float)
+    //     5) odometer (float)
+    // 3 things it can do:
+    //     1) signal crew for takeoff
+    //     2) engage/disengage landing gear
+    //     3) adjust throttle
+};
+/*
+Thing 8) Seating Area
+*/
+struct PlaneCabin // renamed Seating Area to Cabin because it's a more accurate name
+{
+    // 5 properties:
+    //     1) number of seats (int)
+    //     2) number of passengers (int)
+    //     3) fasten seatbelt sign (bool)
+    //     4) overhead storage bin capacity (float)
+    //     5) seat numbers (std::string)
+    // 3 things it can do:
+    //     1) assign seats to passengers
+    //     2) store luggage
+    //     3) turn on/off seatbelt sign
+};
+/*
+Thing 9) Storage
+*/
+struct PlaneStorage
+{
+    // 5 properties:
+    //     1) max weight allowed (float)
+    //     2) width of storage area (float)
+    //     3) length of storage area (float)
+    //     4) height of storage area (float)
+    //     5) number of stored luggage (int)
+    // 3 things it can do:
+    //     1) fill storage space with luggage
+    //     2) empty storage space
+    //     3) check if storage is full
+};
+/*
+Thing 10) airplane
+*/
+struct Airplane
+{
+    // 5 properties:
+    //     1) engine
+    //     2) wings
+    //     3) cockpit
+    //     4) storage
+    //     5) cabin
+    // 3 things it can do:
+    //     1) accelerate
+    //     2) liftoff
+    //     3) adjust altitude
+};
 
 /*
 =================
@@ -613,55 +653,7 @@ struct CarWash  //This is the empty struct, below my plain-English UDT.
 /*
 Notice that the struct name 'CarWash' conforms with the Course Coding Standard, described in the Readme.MD
 */
-struct BassGuitar 
-{
-    
-};
 
-struct VideoGameCharacter 
-{
-    
-};
-
-struct CoffeeShop 
-{
-    
-};
-
-struct BarbecueGrill 
-{
-    
-};
-
-struct PlaneEngine 
-{
-    
-};
-
-struct PlaneWings
-{
-    
-};
-
-struct PlaneCockpit
-{
-    
-};
-
-struct PlaneCabin // renamed Seating Area to Cabin because it's a more accurate name
-{
-    
-};
-
-struct PlaneStorage
-{
-
-};
-
-struct Airplane
-{
-    
-};
 /*
 =================
 Part 1e - Step 2: Commit
