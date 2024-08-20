@@ -469,6 +469,21 @@ struct VideoGameCharacter
     //     5) amount of gold owned (double)
     double goldOwned = 538.53;
 
+    struct equippedWeapon 
+    {
+        // 5 properties:
+        float minDamage = 5.0f;
+        float maxDamage = 7.5f;
+        std::string weaponType = "one-handed sword";
+        int addedStrenghtAttribute = 10;
+        float equippedWeight = 13.3f;
+
+        // 3 functions:
+        float calculateDamage(float minDamage, float maxDamage, int strengthModifier);
+        bool isEquippable(float weight, bool playerHasSpace);
+        float durability(int numOfAttacksMade);
+    };
+
     // 3 things it can do:
     //     1) cast spell
     void castSpell(std::string spellName);
@@ -618,6 +633,21 @@ struct PlaneCabin // renamed Seating Area to Cabin because it's a more accurate 
     float overheadStorageBinCapacityInCubicMeters = 3500.2f; 
     //     5) seat numbers (std::string)
     std::string seatNumber = "22C";
+
+    struct FirstClassSection 
+    {
+        // 5 properties:
+        int numOfFirstClassSeats = 16;
+        float priceOfFirstClassSeat = 100.0f;
+        std::string firstClassFoodOption = "steak and lobster";
+        std::string firstClassDrinkOption = "champagne";
+        float priceOfFirstClassFood = 55.99f;
+
+        // 3 functions:
+        bool engagePrivacyScreen(bool isPrivacyScreenEngaged);
+        float purchaseFirstClassSeat(int numOfFirstClassSeats, float priceOfFirstClassSeat);
+        bool isFirstClassSectionFull(int numOfFirstClassSeats);
+    };
 
     // 3 things it can do:
     //     1) assign seats to passengers
