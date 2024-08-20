@@ -704,7 +704,7 @@ struct Airplane
     PlaneCabin cabin;
     // 3 things it can do:
     //     1) accelerate
-    float accelerate();
+    float accelerate(PlaneEngine engine);
     //     2) liftoff
     bool liftoff();
     //     3) adjust altitude
