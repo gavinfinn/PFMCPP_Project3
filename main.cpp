@@ -445,8 +445,11 @@ struct BassGuitar
 
     // 3 things it can do:
     //     1) play a note
+    void playNote(int noteNumber);
     //     2) modify tone
+    void modifyTone(int toneNumber);
     //     3) change volume
+    float changeVolume(float volumeAdjustment); // returns new volume
 };
 
 /*
@@ -468,8 +471,11 @@ struct VideoGameCharacter
 
     // 3 things it can do:
     //     1) cast spell
+    void castSpell(std::string spellName);
     //     2) select a skill
+    void selectSkill(std::string skillName);
     //     3) attack with weapon
+    float attackWithWeapon(std::string weaponName); // returns damage done
 };
 /*
 Thing 3) coffee shop
@@ -490,8 +496,11 @@ struct CoffeeShop
 
     // 3 things it can do:
     //     1) make coffee
+    int makeCoffee(std::string coffeeType); // returns a number of coffees
     //     2) sell coffee
+    float sellCoffee(int numOfCups); // returns amount charged
     //     3) open and close shop
+    bool openAndCloseShop(bool isOpen); // returns true if shop is open
 };
 /*
 Thing 4) barbecue grill
@@ -512,8 +521,11 @@ struct BarbecueGrill
 
     // 3 things it can do:
     //     1) cook food
+    void cookFood(std::string foodName);
     //     2) ignite burner
+    bool igniteBurner(int burnerNumber);
     //     3) preheat
+    float preheat(float temperature); // returns new temperature
 };
 /*
 Thing 5) Engine
@@ -534,8 +546,11 @@ struct PlaneEngine
 
     // 3 things it can do:
     //     1) accelerate 
+    float accelerate(float acceleration);
     //     2) ignite
+    bool ignite();
     //     3) activate turbo
+    bool activateTurbo();
 };
 /*
 Thing 6) Wings
@@ -556,8 +571,11 @@ struct PlaneWings
 
     // 3 things it can do:
     //     1) engage flaps
+    bool engageFlaps();
     //     2) increase altitude
+    float adjustAltitude(float altitudeAdjustment);
     //     3) adjust pitch, yaw, and roll
+    void adjustPitchYawRoll(float newPitch, float newYaw, float newRoll);
 };
 /*
 Thing 7) Cockpit
@@ -578,8 +596,11 @@ struct PlaneCockpit
 
     // 3 things it can do:
     //     1) signal crew for takeoff
+    void signalCrewForTakeoff();
     //     2) engage/disengage landing gear
+    bool engageLandingGear();
     //     3) adjust throttle
+    float adjustThrottle(float throttleAdjustment);
 };
 /*
 Thing 8) Seating Area
@@ -600,8 +621,11 @@ struct PlaneCabin // renamed Seating Area to Cabin because it's a more accurate 
 
     // 3 things it can do:
     //     1) assign seats to passengers
+    void assignSeatsToPassengers(std::string passengerName);
     //     2) store luggage
+    float storeLuggage(float luggageVolume);
     //     3) turn on/off seatbelt sign
+    bool turnOnSeatbeltSign();
 };
 /*
 Thing 9) Storage
@@ -622,8 +646,11 @@ struct PlaneStorage
 
     // 3 things it can do:
     //     1) fill storage space with luggage
+    float fillStorage(float luggageVolume);
     //     2) empty storage space
+    float emptyStorage(float luggageVolume);
     //     3) check if storage is full
+    bool checkStorageStatus(float storageCapacity, int numOfStoredLuggage);
 };
 /*
 Thing 10) airplane
@@ -643,8 +670,11 @@ struct Airplane
     PlaneCabin cabin;
     // 3 things it can do:
     //     1) accelerate
+    float accelerate();
     //     2) liftoff
+    bool liftoff();
     //     3) adjust altitude
+    float adjustAltitude(float altitudeAdjustment);
 };
 
 /*
