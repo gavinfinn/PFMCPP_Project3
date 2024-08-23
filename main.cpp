@@ -107,10 +107,44 @@ struct CarWash
     you should be able to deduce the return type of those functions based on their usage in Person::run()
     You'll need to insert the Person struct from the video in the space below.
  */
+struct Person 
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
 
+    struct Foot
+    {
+        int stepSize();
+        void stepForward();
+    };
 
+    Foot leftFoot;
+    Foot rightFoot;
+    
+    void run(int howFast, bool startWithLeftFoot);
+};
 
+void Person::Foot::stepForward() {}
+int Person::Foot::stepSize() { return 2; }
 
+void Person::run(int howFast, bool startWithLeftFoot) 
+{
+    if (startWithLeftFoot == true)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTraveled += (leftFoot.stepSize() + rightFoot.stepSize()) * howFast;
+}
 
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
