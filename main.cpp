@@ -177,9 +177,21 @@ struct BassGuitar
     int numOfToneControls = 2;
 
     void playNote(int noteNumber);
-    void modifyTone(int toneNumber);
+    void tune();
     float changeVolume(float volumeAdjustment);
 };
+
+void BassGuitar::playNote(int noteNumber)
+{
+    std::cout << "Playing note " << noteNumber << " on the bass guitar." << std::endl;
+}
+
+void BassGuitar::tune() {}
+
+float BassGuitar::changeVolume(float volumeAdjustment) 
+{
+    return volumeOutput += volumeAdjustment;
+}
 
 /*
 Thing 2) video game character
@@ -197,20 +209,58 @@ struct VideoGameCharacter
         float minDamage = 5.0f;
         float maxDamage = 7.5f;
         std::string weaponType = "one-handed sword";
-        int addedStrenghtAttribute = 10;
+        float addedStrengthAttribute = 10;
         float equippedWeight = 13.3f;
 
-        float calculateDamage(float minDamage, float maxDamage, int strengthModifier);
+        float calculateDamage(EquippedWeapon weapon);
         bool isEquippable(float weight, bool playerHasSpace);
         float durability(int numOfAttacksMade);
     };
 
     void castSpell(std::string spellName);
     void selectSkill(std::string skillName);
-    float attackWithWeapon(EquippedWeapon currentWeapon); 
-
-    EquippedWeapon currentWeapon;
+    float attackWithWeapon(EquippedWeapon weapon); 
 };
+
+float VideoGameCharacter::EquippedWeapon::calculateDamage(EquippedWeapon currentWeapon)
+{
+    return (currentWeapon.minDamage + currentWeapon.maxDamage) / 2.0f + currentWeapon.addedStrengthAttribute;
+}
+
+bool VideoGameCharacter::EquippedWeapon::isEquippable(float weight, bool playerHasSpace)
+{
+    if (playerHasSpace == true && weight <= equippedWeight)
+    {
+        equippedWeight += weight;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+float VideoGameCharacter::EquippedWeapon::durability(int numOfAttacksMade) 
+{
+    return addedStrengthAttribute -= float(numOfAttacksMade) / 100.f;
+}
+
+void VideoGameCharacter::castSpell(std::string spellName)
+{
+    std::cout << "Casting spell " << spellName << " on the target." << std::endl;
+}
+
+void VideoGameCharacter::selectSkill(std::string skillName)
+{
+    std::cout << "Selecting skill " << skillName << " for the character." << std::endl;
+}
+
+float VideoGameCharacter::attackWithWeapon(EquippedWeapon currentWeapon)
+{
+    currentWeapon.durability(1);
+    return currentWeapon.calculateDamage(currentWeapon);
+}
+
 /*
 Thing 3) coffee shop
 */
@@ -222,10 +272,34 @@ struct CoffeeShop
     float priceOfCoffee = 6.75f;
     std::string typesOfCoffeeOptions = "latte";
 
-    int makeCoffee(std::string coffeeType);
-    float sellCoffee(int numOfCups); 
-    bool openAndCloseShop(bool isOpen);
+    void makeCoffee(std::string coffeeType);
+    float sellCoffee(int numOfCups, float priceOfCoffee); 
+    bool openAndCloseShop(int hour, bool isOpen);
 };
+
+void CoffeeShop::makeCoffee(std::string coffeeType)
+{
+    std::cout << "Brewing " << coffeeType << "." << std::endl;
+    numOfCupsSoldPerDay += 1;
+}
+
+float sellCoffee(int numOfCups, float priceOfCoffee)
+{
+    return float(numOfCups) * priceOfCoffee;
+}
+
+bool CoffeeShop::openAndCloseShop(int hour, bool isOpen)
+{
+    if (hour < 6 || hour >= 22)
+    {
+        isOpen = false;
+    }
+    else 
+    {
+        isOpen = true;
+    }
+    return isOpen;
+}
 /*
 Thing 4) barbecue grill
 */
@@ -238,9 +312,38 @@ struct BarbecueGrill
     std::string material = "stainless steel";
 
     void cookFood(std::string foodName);
-    bool igniteBurner(int burnerNumber);
+    bool igniteBurner();
     float preheat(float temperature); 
 };
+
+void BarbecueGrill::cookFood(std::string foodName)
+{
+    std::cout << "Cooking " << foodName << " on the grill." << std::endl;
+}
+
+bool BarbecueGrill::igniteBurner() 
+{
+    return true;
+}
+
+float BarbecueGrill::preheat(float temperature)
+{
+    if (temperature > currentTempInFarenheit)
+    {   
+        std::cout << "Increasing tmeperature to " << temperature << " degrees Farenheit." << std::endl;
+    }
+
+    else if (temperature < currentTempInFarenheit)
+    {
+        std::cout << "Decreasing tmeperature to " << temperature << " degrees Farenheit." << std::endl;
+    }
+
+    else
+    {
+        std::cout << "The grill has been preheated to " << temperature << " degrees Farenheit." << std::endl;
+    }
+    return currentTempInFarenheit = temperature;
+}
 /*
 Thing 5) Engine
 */
@@ -252,10 +355,26 @@ struct Engine
     std::string fuelType = "diesel";
     std::string engineType = "turbojet";
 
-    float accelerate(float acceleration);
+    float accelerate(float acceleration, float time);
     bool ignite();
     bool activateTurbo();
 };
+
+float Engine::accelerate(float newAcceleration, float time)
+{
+    return velocity += newAcceleration * time;
+}
+
+bool Engine::ignite()
+{
+    return true;
+}
+
+bool Engine::activateTurbo()
+{
+    return true;
+}
+
 /*
 Thing 6) Wings
 */
@@ -271,6 +390,22 @@ struct Wings
     float adjustAltitude(float altitudeAdjustment);
     void adjustPitchYawRoll(float newPitch, float newYaw, float newRoll);
 };
+
+bool Wings::engageFlaps()
+{
+    return true;
+}
+
+float Wings::adjustAltitude(float altitudeAdjustment)
+{
+    return altitude += altitudeAdjustment;
+}
+
+void Wings::adjustPitchYawRoll(float newPitch, float newYaw, float newRoll)
+{
+    std::cout << "Adjusting pitch to " << newPitch << " degrees, yaw to " << newYaw << " degrees, and roll to " << newRoll << " degrees." << std::endl;
+}
+
 /*
 Thing 7) Cockpit
 */
@@ -286,6 +421,21 @@ struct Cockpit
     bool engageLandingGear();
     float adjustThrottle(float throttleAdjustment);
 };
+
+void Cockpit::signalCrewForTakeoff()
+{
+    std::cout << "Signaling crew for takeoff." << std::endl;
+}
+
+bool Cockpit::engageLandingGear()
+{
+    return true;
+}
+
+float Cockpit::adjustThrottle(float throttleAdjustment)
+{
+    return currentSpeedInKMPerHour += throttleAdjustment;
+}
 /*
 Thing 8) Seating Area
 */
@@ -306,16 +456,71 @@ struct Cabin
         float priceOfFirstClassFood = 55.99f;
 
         bool engagePrivacyScreen(bool isPrivacyScreenEngaged);
-        float purchaseFirstClassSeat(int numOfFirstClassSeats, float priceOfFirstClassSeat);
-        bool isFirstClassSectionFull(int numOfFirstClassSeats);
+        float purchaseFirstClassSeat(int numOfFirstClassSeatsDesired);
+        bool isFirstClassSectionFull(int numOfFirstClassSeatsPurchased);
     };
 
-    void assignSeatsToPassengers(std::string passengerName, FirstClassSection firstClassSection);
+    void assignSeatsToPassengers(std::string passengerName);
     float storeLuggage(float luggageVolume);
     bool turnOnSeatbeltSign();
 
     FirstClassSection firstClassSection;
 };
+
+bool Cabin::FirstClassSection::engagePrivacyScreen(bool isPrivacyScreenEngaged)
+{
+    if (isPrivacyScreenEngaged != true) 
+    {
+        isPrivacyScreenEngaged = true;
+    }
+    return isPrivacyScreenEngaged;
+}
+
+float Cabin::FirstClassSection::purchaseFirstClassSeat(int numOfFirstClassSeatsDesired)
+{
+    return float(numOfFirstClassSeatsDesired) * priceOfFirstClassSeat;
+}
+
+bool Cabin::FirstClassSection::isFirstClassSectionFull(int numOfFirstClassSeatsPurchased)
+{
+    if (numOfFirstClassSeatsPurchased < numOfFirstClassSeats)
+    {
+        return false;
+    }
+    else if (numOfFirstClassSeatsPurchased > numOfFirstClassSeats)
+    {
+        std::cout << "Error, too many first class seats purchased." << std::endl;
+        return true;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+void Cabin::assignSeatsToPassengers(std::string passengerName)
+{
+    std::cout << "Assigning seat " << seatNumber << " to passenger " << passengerName;
+}
+
+float Cabin::storeLuggage(float luggageVolume)
+{
+    if ((luggageVolume < overheadStorageBinCapacityInCubicMeters) && (overheadStorageBinCapacityInCubicMeters - luggageVolume > 0))
+    {
+        return overheadStorageBinCapacityInCubicMeters -= luggageVolume;
+    }
+    else
+    {
+        std::cout << "Error, luggage volume is too large." << std::endl;
+        return overheadStorageBinCapacityInCubicMeters;
+    }
+}
+
+bool Cabin::turnOnSeatbeltSign()
+{
+    return true;
+}
+
 /*
 Thing 9) Storage
 */
@@ -327,10 +532,43 @@ struct Storage
     float storageAreaHeightInMeters = 19.4f;
     int numOfStoredLuggage = 332;
 
-    float fillStorage(float luggageVolume);
-    float emptyStorage(float luggageVolume);
-    bool checkStorageStatus(float storageCapacity, int numOfStoredLuggage);
+    float fillStorage(float luggageVolume, float currentStorageVolume);
+    float emptyStorage(float luggageVolume, float currentStorageVolume);
+    bool checkStorageStatus(float storageCapacity, float totalLuggageWeight);
 };
+
+float Storage::fillStorage(float luggageVolume, float currentStorageVolume)
+{
+
+    if ((luggageVolume < currentStorageVolume) && (currentStorageVolume - luggageVolume > 0))
+    {
+        numOfStoredLuggage++;
+        return currentStorageVolume -= luggageVolume;
+    }
+    else
+    {
+        std::cout << "Error, luggage volume is too large." << std::endl;
+        return currentStorageVolume;
+    }
+}
+
+float Storage::emptyStorage(float luggageVolume, float currentStorageVolume)
+{
+    numOfStoredLuggage--;
+    return currentStorageVolume -= luggageVolume;
+}
+
+bool Storage::checkStorageStatus(float storageCapacity, float totalLuggageWeight)
+{
+    if (totalLuggageWeight < storageCapacity)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 /*
 Thing 10) airplane
 */
@@ -346,6 +584,22 @@ struct Airplane
     bool liftoff();
     float adjustAltitude(float altitudeAdjustment);
 };
+
+float Airplane::accelerate(Engine engine)
+{
+    return engine.accelerate(engine.acceleration, 1.0f);
+}
+
+float Airplane::adjustAltitude(float altitudeAdjustment)
+{
+    return wings.adjustAltitude(altitudeAdjustment);
+}
+
+bool Airplane::liftoff()
+{
+    Airplane::adjustAltitude(10000.f);
+    return wings.engageFlaps();
+}
 
 int main()
 {
