@@ -234,10 +234,7 @@ bool VideoGameCharacter::EquippedWeapon::isEquippable(float weight, bool playerH
         equippedWeight += weight;
         return true;
     }
-    else
-    {
-        return false;
-    }
+    return false;
 }
 
 float VideoGameCharacter::EquippedWeapon::durability(int numOfAttacksMade) 
@@ -332,12 +329,10 @@ float BarbecueGrill::preheat(float temperature)
     {   
         std::cout << "Increasing tmeperature to " << temperature << " degrees Farenheit." << std::endl;
     }
-
     else if (temperature < currentTempInFarenheit)
     {
         std::cout << "Decreasing tmeperature to " << temperature << " degrees Farenheit." << std::endl;
     }
-
     else
     {
         std::cout << "The grill has been preheated to " << temperature << " degrees Farenheit." << std::endl;
@@ -490,12 +485,8 @@ bool Cabin::FirstClassSection::isFirstClassSectionFull(int numOfFirstClassSeatsP
     else if (numOfFirstClassSeatsPurchased > numOfFirstClassSeats)
     {
         std::cout << "Error, too many first class seats purchased." << std::endl;
-        return true;
     }
-    else
-    {
-        return true;
-    }
+    return true;
 }
 
 void Cabin::assignSeatsToPassengers(std::string passengerName)
@@ -564,10 +555,7 @@ bool Storage::checkStorageStatus(float storageCapacity, float totalLuggageWeight
     {
         return false;
     }
-    else
-    {
-        return true;
-    }
+    return true;
 }
 /*
 Thing 10) airplane
