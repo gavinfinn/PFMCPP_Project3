@@ -107,10 +107,44 @@ struct CarWash
     you should be able to deduce the return type of those functions based on their usage in Person::run()
     You'll need to insert the Person struct from the video in the space below.
  */
+struct Person 
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
 
+    struct Foot
+    {
+        int stepSize();
+        void stepForward();
+    };
 
+    Foot leftFoot;
+    Foot rightFoot;
+    
+    void run(int howFast, bool startWithLeftFoot);
+};
 
+void Person::Foot::stepForward() {}
+int Person::Foot::stepSize() { return 2; }
 
+void Person::run(int howFast, bool startWithLeftFoot) 
+{
+    if (startWithLeftFoot == true)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTraveled += (leftFoot.stepSize() + rightFoot.stepSize()) * howFast;
+}
 
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
@@ -136,285 +170,424 @@ Thing 1) bass guitar
 */
 struct BassGuitar 
 {
-    // 5 properties:
-    //     1) number of strings (int)
     int numOfStrings = 4;
-    //     2) type of pickup (std::string)
     std::string pickupType = "humbucker";
-    //     3) number of frets (int)
     int numOfFrets = 24;
-    //     4) volume output (float)
     float volumeOutput = 0.75f;
-    //     5) number of tone controls (int)
     int numOfToneControls = 2;
 
-    // 3 things it can do:
-    //     1) play a note
     void playNote(int noteNumber);
-    //     2) modify tone
-    void modifyTone(int toneNumber);
-    //     3) change volume
-    float changeVolume(float volumeAdjustment); // returns new volume
+    void tune();
+    float changeVolume(float volumeAdjustment);
 };
+
+void BassGuitar::playNote(int noteNumber)
+{
+    std::cout << "Playing note " << noteNumber << " on the bass guitar." << std::endl;
+}
+
+void BassGuitar::tune() {}
+
+float BassGuitar::changeVolume(float volumeAdjustment) 
+{
+    return volumeOutput += volumeAdjustment;
+}
 
 /*
 Thing 2) video game character
 */
 struct VideoGameCharacter 
 {
-    // 5 properties:
-    //     1) number of lives (int)
     int numOfLives = 3;
-    //     2) current level (int)
     int currentLevel = 5;
-    //     3) armor level (float)
     float armorLevel = 50.75f;
-    //     4) experience bar (double)
     double experienceBar = 104300;
-    //     5) amount of gold owned (double)
     double goldOwned = 538.53;
 
     struct EquippedWeapon 
     {
-        // 5 properties:
         float minDamage = 5.0f;
         float maxDamage = 7.5f;
         std::string weaponType = "one-handed sword";
-        int addedStrenghtAttribute = 10;
+        float addedStrengthAttribute = 10;
         float equippedWeight = 13.3f;
 
-        // 3 functions:
-        float calculateDamage(float minDamage, float maxDamage, int strengthModifier);
+        float calculateDamage(EquippedWeapon weapon);
         bool isEquippable(float weight, bool playerHasSpace);
         float durability(int numOfAttacksMade);
     };
 
-    // 3 things it can do:
-    //     1) cast spell
     void castSpell(std::string spellName);
-    //     2) select a skill
     void selectSkill(std::string skillName);
-    //     3) attack with weapon
-    float attackWithWeapon(EquippedWeapon currentWeapon); 
-
-    EquippedWeapon currentWeapon;
+    float attackWithWeapon(EquippedWeapon weapon); 
 };
+
+float VideoGameCharacter::EquippedWeapon::calculateDamage(EquippedWeapon currentWeapon)
+{
+    return (currentWeapon.minDamage + currentWeapon.maxDamage) / 2.0f + currentWeapon.addedStrengthAttribute;
+}
+
+bool VideoGameCharacter::EquippedWeapon::isEquippable(float weight, bool playerHasSpace)
+{
+    if (playerHasSpace == true && weight <= equippedWeight)
+    {
+        equippedWeight += weight;
+        return true;
+    }
+    return false;
+}
+
+float VideoGameCharacter::EquippedWeapon::durability(int numOfAttacksMade) 
+{
+    return addedStrengthAttribute -= float(numOfAttacksMade) / 100.f;
+}
+
+void VideoGameCharacter::castSpell(std::string spellName)
+{
+    std::cout << "Casting spell " << spellName << " on the target." << std::endl;
+}
+
+void VideoGameCharacter::selectSkill(std::string skillName)
+{
+    std::cout << "Selecting skill " << skillName << " for the character." << std::endl;
+}
+
+float VideoGameCharacter::attackWithWeapon(EquippedWeapon currentWeapon)
+{
+    currentWeapon.durability(1);
+    return currentWeapon.calculateDamage(currentWeapon);
+}
+
 /*
 Thing 3) coffee shop
 */
 struct CoffeeShop 
 {
-    // 5 properties:
-    //     1) number of employees (int)
     int numOfEmployees = 10;
-    //     2) number of coffee machines (int)
     int numOfCoffeeMachines = 3;
-    //     3) number of cups sold per day (int)
     int numOfCupsSoldPerDay = 100;
-    //     4) price of coffee (float)
     float priceOfCoffee = 6.75f;
-    //     5) types of coffee options available (std::string)
     std::string typesOfCoffeeOptions = "latte";
 
-    // 3 things it can do:
-    //     1) make coffee
-    int makeCoffee(std::string coffeeType); // returns a number of coffees
-    //     2) sell coffee
-    float sellCoffee(int numOfCups); // returns amount charged
-    //     3) open and close shop
-    bool openAndCloseShop(bool isOpen); // returns true if shop is open
+    void makeCoffee(std::string coffeeType);
+    float sellCoffee(int numOfCups, float priceOfCoffee); 
+    bool openAndCloseShop(int hour, bool isOpen);
 };
+
+void CoffeeShop::makeCoffee(std::string coffeeType)
+{
+    std::cout << "Brewing " << coffeeType << "." << std::endl;
+    numOfCupsSoldPerDay += 1;
+}
+
+float sellCoffee(int numOfCups, float priceOfCoffee)
+{
+    return float(numOfCups) * priceOfCoffee;
+}
+
+bool CoffeeShop::openAndCloseShop(int hour, bool isOpen)
+{
+    if (hour < 6 || hour >= 22)
+    {
+        isOpen = false;
+    }
+    else 
+    {
+        isOpen = true;
+    }
+    return isOpen;
+}
 /*
 Thing 4) barbecue grill
 */
 struct BarbecueGrill 
 {
-    // 5 properties:
-    //     1) number of burners (int)
     int numOfBurners = 4;
-    //     2) current interior temperature (float)
     float currentTempInFarenheit = 323.5f;
-    //     3) fuel type (std::string)
     std::string fuelType = "propane";
-    //     4) weight (float)
     float weight = 405.15f;
-    //     5) material it's made of (std::string)
     std::string material = "stainless steel";
 
-    // 3 things it can do:
-    //     1) cook food
     void cookFood(std::string foodName);
-    //     2) ignite burner
-    bool igniteBurner(int burnerNumber);
-    //     3) preheat
-    float preheat(float temperature); // returns new temperature
+    bool igniteBurner();
+    float preheat(float temperature); 
 };
+
+void BarbecueGrill::cookFood(std::string foodName)
+{
+    std::cout << "Cooking " << foodName << " on the grill." << std::endl;
+}
+
+bool BarbecueGrill::igniteBurner() 
+{
+    return true;
+}
+
+float BarbecueGrill::preheat(float temperature)
+{
+    if (temperature > currentTempInFarenheit)
+    {   
+        std::cout << "Increasing tmeperature to " << temperature << " degrees Farenheit." << std::endl;
+    }
+    else if (temperature < currentTempInFarenheit)
+    {
+        std::cout << "Decreasing tmeperature to " << temperature << " degrees Farenheit." << std::endl;
+    }
+    else
+    {
+        std::cout << "The grill has been preheated to " << temperature << " degrees Farenheit." << std::endl;
+    }
+    return currentTempInFarenheit = temperature;
+}
 /*
 Thing 5) Engine
 */
-struct PlaneEngine 
+struct Engine 
 {
-    // 5 properties:
-    //     1) velocity (float)
     float velocity = 250.75f;
-    //     2) acceleration (float)
     float acceleration = 5.75f;
-    //     3) power (float)
     float horsePower = 30000.24f;
-    //     4) fuel type (std::string)
     std::string fuelType = "diesel";
-    //     5) engine type (std::string)
     std::string engineType = "turbojet";
 
-    // 3 things it can do:
-    //     1) accelerate 
-    float accelerate(float acceleration);
-    //     2) ignite
+    float accelerate(float acceleration, float time);
     bool ignite();
-    //     3) activate turbo
     bool activateTurbo();
 };
+
+float Engine::accelerate(float newAcceleration, float time)
+{
+    return velocity += newAcceleration * time;
+}
+
+bool Engine::ignite()
+{
+    return true;
+}
+
+bool Engine::activateTurbo()
+{
+    return true;
+}
+
 /*
 Thing 6) Wings
 */
-struct PlaneWings
+struct Wings
 {
-    // 5 properties:
-    //     1) wing loading (float)
     float wingLoadingInKG = 730.2f;
-    //     2) lift to drag ratio (float)
     float liftToDragRatio = 17.0f;
-    //     3) type/shape of wing (std::string)
     std::string wingType = "low swept";
-    //     4) altitude (float))
     float altitude = 30000.0f;
-    //     5) length (float)
     float wingSpan = 68.4f;
 
-    // 3 things it can do:
-    //     1) engage flaps
     bool engageFlaps();
-    //     2) increase altitude
     float adjustAltitude(float altitudeAdjustment);
-    //     3) adjust pitch, yaw, and roll
     void adjustPitchYawRoll(float newPitch, float newYaw, float newRoll);
 };
+
+bool Wings::engageFlaps()
+{
+    return true;
+}
+
+float Wings::adjustAltitude(float altitudeAdjustment)
+{
+    return altitude += altitudeAdjustment;
+}
+
+void Wings::adjustPitchYawRoll(float newPitch, float newYaw, float newRoll)
+{
+    std::cout << "Adjusting pitch to " << newPitch << " degrees, yaw to " << newYaw << " degrees, and roll to " << newRoll << " degrees." << std::endl;
+}
+
 /*
 Thing 7) Cockpit
 */
-struct PlaneCockpit
+struct Cockpit
 {
-    // 5 properties:
-    //     1) number of seats (int)
     int numOfSeats = 2;
-    //     2) number of pilots (int)
     int numOfPilots = 2;
-    //     3) fuel tank meters (float)
     float fuelTankMeter = 0.65f;
-    //     4) spedometer (float)
     float currentSpeedInKMPerHour = 32.0f;
-    //     5) odometer (float)
     float totalDistanceTraveledInKM = 12500.f;
 
-    // 3 things it can do:
-    //     1) signal crew for takeoff
     void signalCrewForTakeoff();
-    //     2) engage/disengage landing gear
     bool engageLandingGear();
-    //     3) adjust throttle
     float adjustThrottle(float throttleAdjustment);
 };
+
+void Cockpit::signalCrewForTakeoff()
+{
+    std::cout << "Signaling crew for takeoff." << std::endl;
+}
+
+bool Cockpit::engageLandingGear()
+{
+    return true;
+}
+
+float Cockpit::adjustThrottle(float throttleAdjustment)
+{
+    return currentSpeedInKMPerHour += throttleAdjustment;
+}
 /*
 Thing 8) Seating Area
 */
-struct PlaneCabin // renamed Seating Area to Cabin because it's a more accurate name
+struct Cabin 
 {
-    // 5 properties:
-    //     1) number of seats (int)
     int numOfSeats = 400;
-    //     2) number of passengers (int)
     int numOfPassengers = 200;
-    //     3) fasten seatbelt sign (bool)
     bool fastenSeatbeltSign = true;
-    //     4) overhead storage bin capacity (float)
     float overheadStorageBinCapacityInCubicMeters = 3500.2f; 
-    //     5) seat numbers (std::string)
     std::string seatNumber = "22C";
 
     struct FirstClassSection 
     {
-        // 5 properties:
         int numOfFirstClassSeats = 16;
         float priceOfFirstClassSeat = 100.0f;
         std::string firstClassFoodOption = "steak and lobster";
         std::string firstClassDrinkOption = "champagne";
         float priceOfFirstClassFood = 55.99f;
 
-        // 3 functions:
         bool engagePrivacyScreen(bool isPrivacyScreenEngaged);
-        float purchaseFirstClassSeat(int numOfFirstClassSeats, float priceOfFirstClassSeat);
-        bool isFirstClassSectionFull(int numOfFirstClassSeats);
+        float purchaseFirstClassSeat(int numOfFirstClassSeatsDesired);
+        bool isFirstClassSectionFull(int numOfFirstClassSeatsPurchased);
     };
 
-    // 3 things it can do:
-    //     1) assign seats to passengers
-    void assignSeatsToPassengers(std::string passengerName, FirstClassSection firstClassSection);
-    //     2) store luggage
+    void assignSeatsToPassengers(std::string passengerName);
     float storeLuggage(float luggageVolume);
-    //     3) turn on/off seatbelt sign
     bool turnOnSeatbeltSign();
 
     FirstClassSection firstClassSection;
 };
+
+bool Cabin::FirstClassSection::engagePrivacyScreen(bool isPrivacyScreenEngaged)
+{
+    if (isPrivacyScreenEngaged != true) 
+    {
+        isPrivacyScreenEngaged = true;
+    }
+    return isPrivacyScreenEngaged;
+}
+
+float Cabin::FirstClassSection::purchaseFirstClassSeat(int numOfFirstClassSeatsDesired)
+{
+    return float(numOfFirstClassSeatsDesired) * priceOfFirstClassSeat;
+}
+
+bool Cabin::FirstClassSection::isFirstClassSectionFull(int numOfFirstClassSeatsPurchased)
+{
+    if (numOfFirstClassSeatsPurchased < numOfFirstClassSeats)
+    {
+        return false;
+    }
+    else if (numOfFirstClassSeatsPurchased > numOfFirstClassSeats)
+    {
+        std::cout << "Error, too many first class seats purchased." << std::endl;
+    }
+    return true;
+}
+
+void Cabin::assignSeatsToPassengers(std::string passengerName)
+{
+    std::cout << "Assigning seat " << seatNumber << " to passenger " << passengerName;
+}
+
+float Cabin::storeLuggage(float luggageVolume)
+{
+    if ((luggageVolume < overheadStorageBinCapacityInCubicMeters) && (overheadStorageBinCapacityInCubicMeters - luggageVolume > 0))
+    {
+        return overheadStorageBinCapacityInCubicMeters -= luggageVolume;
+    }
+    else
+    {
+        std::cout << "Error, luggage volume is too large." << std::endl;
+        return overheadStorageBinCapacityInCubicMeters;
+    }
+}
+
+bool Cabin::turnOnSeatbeltSign()
+{
+    return true;
+}
+
 /*
 Thing 9) Storage
 */
-struct PlaneStorage
+struct Storage
 {
-    // 5 properties:
-    //     1) max weight allowed (float)
     float storageCapacityInTonnes = 128.5f;
-    //     2) width of storage area (float)
     float storageAreaWidthInMeters = 5.9f;
-    //     3) length of storage area (float)
     float storageAreaLengthInMeters = 70.7f;
-    //     4) height of storage area (float)
     float storageAreaHeightInMeters = 19.4f;
-    //     5) number of stored luggage (int)
     int numOfStoredLuggage = 332;
 
-    // 3 things it can do:
-    //     1) fill storage space with luggage
-    float fillStorage(float luggageVolume);
-    //     2) empty storage space
-    float emptyStorage(float luggageVolume);
-    //     3) check if storage is full
-    bool checkStorageStatus(float storageCapacity, int numOfStoredLuggage);
+    float fillStorage(float luggageVolume, float currentStorageVolume);
+    float emptyStorage(float luggageVolume, float currentStorageVolume);
+    bool checkStorageStatus(float storageCapacity, float totalLuggageWeight);
 };
+
+float Storage::fillStorage(float luggageVolume, float currentStorageVolume)
+{
+
+    if ((luggageVolume < currentStorageVolume) && (currentStorageVolume - luggageVolume > 0))
+    {
+        numOfStoredLuggage++;
+        return currentStorageVolume -= luggageVolume;
+    }
+    else
+    {
+        std::cout << "Error, luggage volume is too large." << std::endl;
+        return currentStorageVolume;
+    }
+}
+
+float Storage::emptyStorage(float luggageVolume, float currentStorageVolume)
+{
+    numOfStoredLuggage--;
+    return currentStorageVolume -= luggageVolume;
+}
+
+bool Storage::checkStorageStatus(float storageCapacity, float totalLuggageWeight)
+{
+    if (totalLuggageWeight < storageCapacity)
+    {
+        return false;
+    }
+    return true;
+}
 /*
 Thing 10) airplane
 */
 struct Airplane
 {
-    // 5 properties:
-    //     1) engine
-    PlaneEngine jetEngine;
-    //     2) wings
-    PlaneWings wings;
-    //     3) cockpit
-    PlaneCockpit cockpit;
-    //     4) storage
-    PlaneStorage storage;
-    //     5) cabin
-    PlaneCabin cabin;
-    // 3 things it can do:
-    //     1) accelerate
-    float accelerate(PlaneEngine engine);
-    //     2) liftoff
+    Engine jetEngine;
+    Wings wings;
+    Cockpit cockpit;
+    Storage storage;
+    Cabin cabin;
+
+    float accelerate(Engine engine);
     bool liftoff();
-    //     3) adjust altitude
     float adjustAltitude(float altitudeAdjustment);
 };
+
+float Airplane::accelerate(Engine engine)
+{
+    return engine.accelerate(engine.acceleration, 1.0f);
+}
+
+float Airplane::adjustAltitude(float altitudeAdjustment)
+{
+    return wings.adjustAltitude(altitudeAdjustment);
+}
+
+bool Airplane::liftoff()
+{
+    Airplane::adjustAltitude(10000.f);
+    return wings.engageFlaps();
+}
 
 int main()
 {
